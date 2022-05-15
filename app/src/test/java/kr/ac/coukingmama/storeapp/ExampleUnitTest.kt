@@ -1,4 +1,4 @@
-package kr.ac.coukingMama.storeapp
+package kr.ac.coukingmama.storeapp
 
 import org.junit.Test
 

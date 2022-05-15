@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="coukingMama.storeapp">
+    package="kr.ac.coukingmama.storeapp">
 
     <application
         android:allowBackup="true"
@@ -10,14 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoupowningStore">
         <activity
-            android:name="kr.ac.coukingMama.storeapp.MainActivity"
-            android:exported="true">
+            android:name=".certified.InquireActivity"
+            android:exported="false" />
+        <activity
+            android:name=".before.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

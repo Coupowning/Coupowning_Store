@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CoupowningStore</string>
+    <string name="app_logo">CouponOwning</string>
+    <string name="kakao">loginByKakao</string>
+    <string name="google">loginByGoogle</string>
+    <string name="coupowning">쿠포닝</string>
+    <string name="setting">setting</string>
+    <string name="logo">logo</string>
 </resources>

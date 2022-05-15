@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".before.LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="300dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@drawable/logo2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/kakao_login"
+        android:layout_width="343dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="440dp"
+        android:src="@drawable/kakao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/kakao" />
+
+    <ImageView
+        android:id="@+id/google_login"
+        android:layout_width="343dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="516dp"
+        android:src="@drawable/google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/google" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

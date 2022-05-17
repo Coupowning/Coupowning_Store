@@ -9,4 +9,10 @@
     <string name="storeimage">storeImage</string>
     <string name="introduce">소개</string>
     <string name="ceoname">대표자 성명</string>
+    <string name="stampsum">총 스탬프 개수</string>
+    <string name="benefit">혜택</string>
+    <string name="address">주소</string>
+    <string name="registerstore">가게 등록</string>
+    <string name="modifystore">가게 수정</string>
+    <string name="num">개</string>
 </resources>

@@ -7,37 +7,37 @@
     tools:context=".certified.InquireActivity">
 
     <ImageView
-        android:src="@drawable/stamp"
+        android:id="@+id/stampimage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="370dp"
-        android:layout_marginBottom="701dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
         android:contentDescription="@string/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/stamp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="13dp"
         android:layout_marginTop="10dp"
         android:text="@string/coupowning"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        app:layout_constraintStart_toEndOf="@+id/stampimage"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:src="@drawable/setting"
+        android:id="@+id/settingimage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="370dp"
-        android:layout_marginBottom="691dp"
+        android:layout_marginEnd="1dp"
         android:contentDescription="@string/setting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:src="@drawable/setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeimage"
@@ -53,15 +53,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="265dp"
         android:text="카페 302"
         android:textColor="@color/blue"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storeimage" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
+        android:id="@+id/introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -71,5 +72,126 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storename" />
+
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="22dp"
+        android:text="분위기 좋은 카페"
+        app:layout_constraintBottom_toTopOf="@+id/stamp"
+        app:layout_constraintStart_toEndOf="@+id/introduce" />
+
+    <TextView
+        android:id="@+id/stamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/stampsum"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/introduce" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="22dp"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@+id/stamp"
+        app:layout_constraintTop_toBottomOf="@+id/intro"
+        android:id="@+id/stampsum"/>
+
+    <TextView
+        android:id="@+id/benefit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/benefit"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stamp" />
+
+    <TextView
+        android:id="@+id/num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@+id/benefit"
+        app:layout_constraintTop_toBottomOf="@+id/stamp" />
+
+
+    <TextView
+        android:id="@+id/numofstamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/num"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/num"
+        app:layout_constraintTop_toBottomOf="@+id/stamp" />
+
+    <TextView
+        android:id="@+id/award"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="20dp"
+        android:text="아메리카노 1잔"
+        app:layout_constraintStart_toEndOf="@+id/benefit"
+        app:layout_constraintTop_toBottomOf="@+id/stampsum" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/address"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/benefit" />
+
+    <TextView
+        android:id="@+id/addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:text="경기도 시흥시 정왕동..."
+        app:layout_constraintStart_toEndOf="@+id/address"
+        app:layout_constraintTop_toBottomOf="@+id/award" />
+
+    <ImageView
+        android:id="@+id/modifystore"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="27dp"
+        android:contentDescription="@string/modifystore"
+        android:src="@drawable/modifystore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addr"
+        app:layout_constraintTop_toBottomOf="@+id/addr" />
+
+    <ImageView
+        android:id="@+id/camerabutton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginBottom="42dp"
+        android:src="@drawable/camerabutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

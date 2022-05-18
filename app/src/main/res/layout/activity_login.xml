@@ -19,26 +19,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <Button
         android:id="@+id/kakao_login"
         android:layout_width="343dp"
-        android:layout_height="133dp"
+        android:layout_height="70dp"
         android:layout_marginTop="440dp"
-        android:src="@drawable/kakao"
+        style="@drawable/kakao_style"
+        android:backgroundTint="@color/kakaoyellow"
+        android:contentDescription="@string/kakao"
+        android:drawableLeft="@drawable/kakaologo"
+        android:paddingLeft="90dp"
+        android:paddingRight="90dp"
+        android:text="카카오로 시작하기"
+        android:textColor="@color/kakaolabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/kakao" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <Button
         android:id="@+id/google_login"
         android:layout_width="343dp"
-        android:layout_height="133dp"
+        android:layout_height="70dp"
         android:layout_marginTop="516dp"
-        android:src="@drawable/google"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/google" />
+        android:contentDescription="@string/google"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:text="Google로 시작하기"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/googlelogo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,12 +25,21 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="10dp"
         android:text="@string/coupowning"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/settingimage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="1dp"
+        android:contentDescription="@string/setting"
+        android:src="@drawable/setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/ceoname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
@@ -38,5 +47,73 @@
         android:text="@string/ceoname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="15dp"
+        android:autofillHints=""
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ceoname"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/registrationnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/registrationnum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <EditText
+        android:id="@+id/reginum"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="18dp"
+        android:autofillHints=""
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registrationnum"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/opendate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/opendate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reginum" />
+
+    <EditText
+        android:id="@+id/opdate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opendate"
+        tools:ignore="LabelFor" />
+
+    <ImageView
+        android:id="@+id/certificate"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="275dp"
+        android:src="@drawable/certificate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

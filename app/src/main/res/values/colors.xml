@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink1">#FFF97C7C</color>
     <color name="blue">#FF191970</color>
+    <color name="kakaoyellow">#FFFEE500</color>
+    <color name="kakaolabel">#FF191919</color>
 </resources>

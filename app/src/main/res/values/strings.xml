@@ -15,4 +15,7 @@
     <string name="registerstore">가게 등록</string>
     <string name="modifystore">가게 수정</string>
     <string name="num">개</string>
+    <string name="registrationnum">사업자 등록번호</string>
+    <string name="opendate">개업 일자</string>
+    <string name="certificate">인증</string>
 </resources>

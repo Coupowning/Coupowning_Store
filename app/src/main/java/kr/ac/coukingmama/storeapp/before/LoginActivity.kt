@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kr.ac.coukingmama.storeapp.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() { // 로그인 페이지
 
     lateinit var binding : ActivityLoginBinding
 

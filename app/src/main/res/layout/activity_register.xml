@@ -73,13 +73,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storename" />
 
-    <TextView
+    <EditText
         android:id="@+id/intro"
-        android:layout_width="wrap_content"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="22dp"
-        android:text="분위기 좋은 카페"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/stamp"
         app:layout_constraintStart_toEndOf="@+id/introduce" />
 
@@ -95,15 +94,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/introduce" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/stampsum"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="22dp"
-        android:text="10"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="360dp"
         app:layout_constraintStart_toEndOf="@+id/stamp"
-        app:layout_constraintTop_toBottomOf="@+id/intro"
-        android:id="@+id/stampsum"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/benefit"
@@ -117,45 +115,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
-    <TextView
+    <EditText
         android:id="@+id/num"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="20dp"
-        android:text="10"
-        app:layout_constraintStart_toEndOf="@+id/benefit"
-        app:layout_constraintTop_toBottomOf="@+id/stamp" />
-
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="5dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/addr"
+        app:layout_constraintStart_toEndOf="@+id/numofstamp"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/numofstamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
         android:text="@string/num"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/num"
-        app:layout_constraintTop_toBottomOf="@+id/stamp" />
-
-    <TextView
-        android:id="@+id/award"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
-        android:text="아메리카노 1잔"
-        app:layout_constraintStart_toEndOf="@+id/benefit"
+        app:layout_constraintStart_toEndOf="@+id/award"
         app:layout_constraintTop_toBottomOf="@+id/stampsum" />
+
+    <EditText
+        android:id="@+id/award"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/benefit"
+        app:layout_constraintTop_toBottomOf="@+id/stampsum"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
         android:text="@string/address"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -169,7 +169,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/address"
-        app:layout_constraintTop_toBottomOf="@+id/award" />
+        app:layout_constraintTop_toBottomOf="@+id/award"
+        android:inputType="text"
+        android:autofillHints="no"
+        tools:ignore="LabelFor" />
 
     <ImageView
         android:id="@+id/modifystore"

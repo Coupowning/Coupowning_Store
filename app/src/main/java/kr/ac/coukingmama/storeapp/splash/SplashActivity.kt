@@ -10,7 +10,7 @@ import kr.ac.coukingmama.storeapp.MainActivity
 import kr.ac.coukingmama.storeapp.databinding.ActivitySplashBinding
 
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() { // 스플래시 화면
 
     lateinit var binding : ActivitySplashBinding
 

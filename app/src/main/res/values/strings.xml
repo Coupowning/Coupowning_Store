@@ -18,4 +18,5 @@
     <string name="registrationnum">사업자 등록번호</string>
     <string name="opendate">개업 일자</string>
     <string name="certificate">인증</string>
+    <string name="barcode_value">Barcode Value:</string>
 </resources>

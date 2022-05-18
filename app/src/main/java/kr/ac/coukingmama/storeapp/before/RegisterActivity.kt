@@ -2,11 +2,15 @@ package kr.ac.coukingmama.storeapp.before
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kr.ac.coukingmama.storeapp.R
+import kr.ac.coukingmama.storeapp.databinding.ActivityRegisterBinding
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
+
+    lateinit var binding : ActivityRegisterBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }

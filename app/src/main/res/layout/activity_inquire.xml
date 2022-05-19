@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/coupowning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/nanumgothic"
         android:id="@+id/storename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,6 +64,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,6 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/storename" />
 
     <TextView
+        android:fontFamily="@font/nanumgothic"
         android:id="@+id/intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,6 +88,7 @@
         app:layout_constraintStart_toEndOf="@+id/introduce" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/stamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/introduce" />
 
     <TextView
+        android:fontFamily="@font/nanumgothic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
@@ -106,6 +112,7 @@
         android:id="@+id/stampsum"/>
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/benefit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,6 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
     <TextView
+        android:fontFamily="@font/nanumgothic"
         android:id="@+id/num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -129,6 +137,7 @@
 
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/numofstamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,6 +150,7 @@
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
     <TextView
+        android:fontFamily="@font/nanumgothic"
         android:id="@+id/award"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,6 +161,7 @@
         app:layout_constraintTop_toBottomOf="@+id/stampsum" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,6 +174,7 @@
         app:layout_constraintTop_toBottomOf="@+id/benefit" />
 
     <TextView
+        android:fontFamily="@font/nanumgothic"
         android:id="@+id/addr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -173,6 +185,7 @@
         app:layout_constraintTop_toBottomOf="@+id/award" />
 
     <ImageView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/modifystore"
         android:layout_width="100dp"
         android:layout_height="40dp"

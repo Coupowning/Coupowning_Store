@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/kakao_login"
         android:layout_width="343dp"
         android:layout_height="70dp"
@@ -37,6 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/google_login"
         android:layout_width="343dp"
         android:layout_height="70dp"

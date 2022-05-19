@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/coupowning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,6 +63,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,10 +81,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="12dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/stamp"
         app:layout_constraintStart_toEndOf="@+id/introduce" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/stamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,10 +102,10 @@
         android:id="@+id/stampsum"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toEndOf="@+id/stamp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/intro" />
 
     <TextView
         android:id="@+id/benefit"
@@ -109,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="19dp"
+        android:fontFamily="@font/suncheonb"
         android:text="@string/benefit"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -130,9 +135,9 @@
     <TextView
         android:id="@+id/numofstamp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/suncheonb"
         android:text="@string/num"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -147,10 +152,11 @@
         android:autofillHints="no"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/benefit"
-        app:layout_constraintTop_toBottomOf="@+id/stampsum"
+        app:layout_constraintTop_toBottomOf="@+id/stamp"
         tools:ignore="LabelFor" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -175,6 +181,7 @@
         tools:ignore="LabelFor" />
 
     <ImageView
+        android:fontFamily="@font/suncheonb"
         android:id="@+id/modifystore"
         android:layout_width="100dp"
         android:layout_height="40dp"

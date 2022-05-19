@@ -19,6 +19,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
+        android:textColor="@color/black"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +41,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
+        android:textColor="@color/black"
         android:id="@+id/ceoname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +65,8 @@
         tools:ignore="LabelFor" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
+        android:textColor="@color/black"
         android:id="@+id/registrationnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,6 +89,8 @@
         tools:ignore="LabelFor" />
 
     <TextView
+        android:fontFamily="@font/suncheonb"
+        android:textColor="@color/black"
         android:id="@+id/opendate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

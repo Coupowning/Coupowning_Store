@@ -4,25 +4,26 @@
     package="kr.ac.coukingmama.storeapp">
 
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="true"
         android:theme="@style/Theme.CoupowningStore">
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-            android:value="barcode"/>
+            android:value="barcode" />
+        <activity
+            android:name=".certified.QRActivity"
+            android:exported="false" />
         <activity
             android:name=".before.CertificateActivity"
             android:exported="false" />
-        <activity
-            android:name=".certified.QRActivity"
-            android:exported="false"/>
         <activity
             android:name=".before.RegisterActivity"
             android:exported="false" />

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".certified.QRActivity">
+    tools:context=".certified.QRActivity"
+    android:backgroundTint="@color/blur">
 
     <androidx.camera.view.PreviewView
         android:id="@+id/cameraView"
@@ -14,19 +15,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:fontFamily="@font/suncheonb"
-        android:id="@+id/bottomText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="32dp"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/barcode_value"
-        android:textColor="@color/black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

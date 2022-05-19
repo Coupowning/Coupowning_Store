@@ -24,6 +24,7 @@ private const val CAMERA_PERMISSION_REQUEST_CODE = 1
 
 @ExperimentalGetImage
 class QRActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityQrBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,11 +86,10 @@ class QRActivity : AppCompatActivity() {
             val analysisUseCase = ImageAnalysis.Builder()
                 .build()
             analysisUseCase.setAnalyzer(
-                Executors.newSingleThreadExecutor(),
-                { imageProxy ->
-                    processImageProxy(scanner, imageProxy)
-                }
-            )
+                Executors.newSingleThreadExecutor()
+            ) { imageProxy ->
+                processImageProxy(scanner, imageProxy)
+            }
 
             // configure to use the back camera
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -124,7 +124,7 @@ class QRActivity : AppCompatActivity() {
                 .addOnSuccessListener { barcodeList ->
                     val barcode = barcodeList.getOrNull(0)
                     barcode?.rawValue?.let { value ->
-                        binding.bottomText.text = "Barcode Value: $value"
+                        Toast.makeText(this, "Barcode Value: $value", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener {
@@ -139,5 +139,5 @@ class QRActivity : AppCompatActivity() {
     companion object {
         val TAG: String = MainActivity::class.java.simpleName
     }
-}
 
+}

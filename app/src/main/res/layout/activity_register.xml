@@ -42,7 +42,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeimage"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="80dp"
@@ -186,7 +186,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginEnd="27dp"
-        android:contentDescription="@string/modifystore"
+        android:contentDescription="@string/registerstore"
         android:src="@drawable/registerstore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/addr"

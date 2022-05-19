@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.ExperimentalGetImage
 import kr.ac.coukingmama.storeapp.MainActivity
 import kr.ac.coukingmama.storeapp.databinding.ActivitySplashBinding
 
 @SuppressLint("CustomSplashScreen")
+@ExperimentalGetImage
 class SplashActivity : AppCompatActivity() { // 스플래시 화면
 
     lateinit var binding : ActivitySplashBinding
@@ -18,7 +20,7 @@ class SplashActivity : AppCompatActivity() { // 스플래시 화면
         super.onCreate(savedInstanceState)
         getWindow().setFlags( // 상단바 없애기
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

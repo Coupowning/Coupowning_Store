@@ -11,4 +11,5 @@
     <color name="blue">#FF191970</color>
     <color name="kakaoyellow">#FFFEE500</color>
     <color name="kakaolabel">#FF191919</color>
+    <color name="blur">#65000000</color>
 </resources>

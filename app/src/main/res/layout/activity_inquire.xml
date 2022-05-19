@@ -42,7 +42,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeimage"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="80dp"
@@ -204,7 +204,8 @@
         android:layout_marginBottom="42dp"
         android:src="@drawable/camerabutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/camerabutton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

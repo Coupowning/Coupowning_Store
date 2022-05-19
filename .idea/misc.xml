@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.349" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/button_style.xml" value="0.2745" />
+        <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/flip.xml" value="0.278" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/googlelogo.xml" value="0.2745" />
+        <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/kakao_style.xml" value="0.339" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/kakaologo.xml" value="0.2745" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/setting.xml" value="0.1475" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/drawable/stamp.xml" value="0.325" />
@@ -19,6 +21,7 @@
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/layout/activity_qr.xml" value="0.25" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/layout/activity_register.xml" value="0.33697916666666666" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/layout/activity_splash.xml" value="0.286231884057971" />
+        <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/layout/list_item.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/layout/qr_activity.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/ohksj/AndroidStudioProjects/CoupowningStore/app/src/main/res/layout/store_image.xml" value="0.26902173913043476" />
       </map>

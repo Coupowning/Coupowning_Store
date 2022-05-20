@@ -22,7 +22,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         binding.storeimage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         binding.settingimage.setOnClickListener{
-            val intent = Intent(this, SettingActivity::class.java) // 가게 등록 페이지
+            val intent = Intent(this, SettingActivity::class.java) // 설정 페이지
             startActivity(intent)
         }
     }

@@ -12,7 +12,7 @@ import kr.ac.coukingmama.storeapp.R
 
 class ListItemAdapter(val context: Context,  private val imageDTOList: List<ImageDTO> = ArrayList(),
         private val uidList: List<String> = ArrayList(),
-        private val storage: FirebaseStorage? = null): RecyclerView.Adapter<ListItemAdapter.ListViewHolder>() {
+        private val storage: FirebaseStorage? = null): RecyclerView.Adapter<ListItemAdapter.ListViewHolder>() { // 리사이클러뷰 어댑터
 
     inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 

@@ -1,6 +1,7 @@
 package kr.ac.coukingmama.storeapp.certified
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,7 @@ import java.util.concurrent.Executors
 private const val CAMERA_PERMISSION_REQUEST_CODE = 1
 
 @ExperimentalGetImage
-class QRActivity : AppCompatActivity() {
+class QRActivity : AppCompatActivity() { // QR인식 페이지
 
     private lateinit var binding: ActivityQrBinding
 
@@ -125,6 +126,8 @@ class QRActivity : AppCompatActivity() {
                     val barcode = barcodeList.getOrNull(0)
                     barcode?.rawValue?.let { value ->
                         Toast.makeText(this, "Barcode Value: $value", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, AccumulateActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 .addOnFailureListener {

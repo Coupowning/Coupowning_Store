@@ -23,12 +23,17 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
         binding.storeimage.adapter = listAdapter
         binding.storeimage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+        binding.settingimage.setOnClickListener{
+            val intent = Intent(this, SettingActivity::class.java) // 가게 수정 페이지
+            startActivity(intent)
+        }
+
         binding.modifystore.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java) // 가게 등록 페이지
             startActivity(intent)
         }
         binding.camerabutton.setOnClickListener{
-            val intent = Intent(this, QRActivity::class.java) // 가게 등록 페이지
+            val intent = Intent(this, QRActivity::class.java) // QR 인식 페이지
             startActivity(intent)
         }
     }

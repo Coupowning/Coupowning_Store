@@ -16,10 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoupowningStore">
         <activity
-            android:name=".SettingActivity"
+            android:name=".certified.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".AccumulateActivity"
+            android:name=".certified.AccumulateActivity"
             android:exported="false" />
 
         <meta-data

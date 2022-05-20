@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CoupowningStore</string>
+    <string name="app_name">쿠포닝</string>
     <string name="app_logo">CouponOwning</string>
     <string name="kakao">loginByKakao</string>
     <string name="google">loginByGoogle</string>
@@ -21,4 +21,13 @@
     <string name="barcode_value">Barcode Value:</string>
     <string name="item_list">사진리스트</string>
     <string name="camerabutton">카메라버튼</string>
+    <string name="plus">적립</string>
+    <string name="minus">차감</string>
+    <string name="back">뒤로가기</string>
+    <string name="plusdiscription">적립할 도장 개수</string>
+    <string name="minusbutton">차감</string>
+    <string name="finish">완료</string>
+    <string name="logout">로그아웃</string>
+    <string name="leave">회원탈퇴</string>
+    <string name="inquiry">문의 : ohksj77@naver.com</string>
 </resources>

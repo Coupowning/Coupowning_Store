@@ -6,58 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".before.CertificateActivity">
 
-    <ImageView
-        android:src="@drawable/stamp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="370dp"
-        android:layout_marginBottom="701dp"
-        android:contentDescription="@string/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:contentInsetStart="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/logo"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/stamp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/suncheonb"
+            android:text="@string/coupowning"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/settingimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="265dp"
+            android:contentDescription="@string/setting"
+            android:src="@drawable/setting" />
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:fontFamily="@font/suncheonb"
-        android:textColor="@color/black"
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/coupowning"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/settingimage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="1dp"
-        android:contentDescription="@string/setting"
-        android:src="@drawable/setting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:fontFamily="@font/suncheonb"
-        android:textColor="@color/black"
         android:id="@+id/ceoname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="71dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/suncheonb"
         android:text="@string/ceoname"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +122,7 @@
         android:src="@drawable/certificate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/" />
+        android:contentDescription="@string/certificate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

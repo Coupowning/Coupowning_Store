@@ -6,39 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".certified.InquireActivity">
 
-    <ImageView
-        android:id="@+id/stampimage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/stamp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:contentInsetStart="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <TextView
-        android:fontFamily="@font/suncheonb"
-        android:id="@+id/coupowning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/coupowning"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/stampimage"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/stampimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/stamp" />
 
-    <ImageView
-        android:id="@+id/settingimage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="1dp"
-        android:contentDescription="@string/setting"
-        android:src="@drawable/setting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:fontFamily="@font/suncheonb"
+            android:id="@+id/coupowning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/coupowning"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/settingimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="265dp"
+            android:contentDescription="@string/setting"
+            android:src="@drawable/setting" />
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeimage"

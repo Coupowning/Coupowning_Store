@@ -52,7 +52,8 @@
         android:layout_marginTop="22dp"
         android:background="@drawable/addimage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:contentDescription="@string/search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeimage"
@@ -97,7 +98,10 @@
         android:layout_marginBottom="12dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/stamp"
-        app:layout_constraintStart_toEndOf="@+id/introduce" />
+        app:layout_constraintStart_toEndOf="@+id/introduce"
+        android:inputType="text"
+        android:autofillHints="no"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:fontFamily="@font/suncheonb"
@@ -119,7 +123,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toEndOf="@+id/stamp"
-        app:layout_constraintTop_toTopOf="@+id/intro" />
+        app:layout_constraintTop_toTopOf="@+id/intro"
+        android:inputType="number"
+        android:autofillHints="no"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/benefit"
@@ -141,7 +148,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginBottom="5dp"
         android:autofillHints="no"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/addr"
         app:layout_constraintStart_toEndOf="@+id/numofstamp"
         tools:ignore="LabelFor" />
@@ -203,16 +210,18 @@
         app:layout_constraintTop_toBottomOf="@+id/award"
         tools:ignore="LabelFor" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <EditText
+        android:id="@+id/etaddress"
         android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="11dp"
-        android:contentDescription="@string/line"
-        android:src="@drawable/line"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addr" />
+        app:layout_constraintTop_toBottomOf="@+id/award"
+        android:autofillHints="no"
+        android:inputType="text"
+        tools:ignore="LabelFor"
+        android:enabled="false"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -225,16 +234,17 @@
         app:layout_constraintTop_toBottomOf="@+id/numofstamp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/suncheonb"
+        android:textStyle="bold"
         android:text="@string/phonenum"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/etaddress" />
 
     <EditText
         android:id="@+id/phonenum"
@@ -243,8 +253,8 @@
         android:layout_marginStart="6dp"
         android:autofillHints="no"
         android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@+id/etaddress"
         tools:ignore="LabelFor" />
 
     <ImageView
@@ -257,9 +267,7 @@
         android:fontFamily="@font/suncheonb"
         android:src="@drawable/registerstore"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/addr"
         app:layout_constraintTop_toBottomOf="@+id/search" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

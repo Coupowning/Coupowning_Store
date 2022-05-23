@@ -8,18 +8,19 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.storage.FirebaseStorage
 import kr.ac.coukingmama.storeapp.R
+import kr.ac.coukingmama.storeapp.database.Store
 
 
-class ListItemAdapter(val context: Context,  private val imageDTOList: List<ImageDTO> = ArrayList(),
-        private val uidList: List<String> = ArrayList(),
-        private val storage: FirebaseStorage? = null): RecyclerView.Adapter<ListItemAdapter.ListViewHolder>() { // 리사이클러뷰 어댑터
+class ListItemAdapter(val context: Context, private var imageDTOList: MutableList<Store> = ArrayList(),
+                      private val uidList: MutableList<String> = ArrayList(),
+                      private val storage: FirebaseStorage? = null): RecyclerView.Adapter<ListItemAdapter.ListViewHolder>() { // 리사이클러뷰 어댑터
 
     inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         var imageView = itemView.findViewById<ImageView>(R.id.list_item)!!
 
-        fun onBind(data: ImageDTO){
-//            imageView = data.imageUrl
+        fun onBind(data: Store){
+
         }
     }
 
@@ -34,5 +35,9 @@ class ListItemAdapter(val context: Context,  private val imageDTOList: List<Imag
 
     override fun getItemCount(): Int {
         return imageDTOList.size
+    }
+
+    fun setListData(it: MutableList<Store>) {
+        imageDTOList = it
     }
 }

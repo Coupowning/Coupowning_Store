@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ExperimentalGetImage
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.ac.coukingmama.storeapp.before.RegisterActivity
+import kr.ac.coukingmama.storeapp.database.ListViewModel
 import kr.ac.coukingmama.storeapp.databinding.ActivityInquireBinding
 import kr.ac.coukingmama.storeapp.recyclerview.ListItemAdapter
 
@@ -14,6 +17,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
 
     lateinit var binding : ActivityInquireBinding
     private lateinit var listAdapter: ListItemAdapter
+    private val viewModel by lazy { ViewModelProvider(this).get(ListViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,5 +40,12 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
             val intent = Intent(this, QRActivity::class.java) // QR 인식 페이지
             startActivity(intent)
         }
+    }
+
+    fun observeData(){
+        viewModel.fetchData().observe(this, Observer{
+            listAdapter.setListData(it)
+            listAdapter.notifyDataSetChanged()
+        })
     }
 }

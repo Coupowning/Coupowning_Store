@@ -8,7 +8,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "kr.ac.coukingMama.storeapp"
+        applicationId "kr.ac.coukingmama.storeapp"
         minSdk 28
         targetSdk 32
         versionCode 1

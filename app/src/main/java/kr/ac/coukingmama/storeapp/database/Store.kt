@@ -1,5 +1,16 @@
 package kr.ac.coukingmama.storeapp.database
 
-import kr.ac.coukingmama.storeapp.recyclerview.ImageDTO
+import com.google.gson.annotations.SerializedName
 
-class Store (val storeName : String, val storeLocation: StoreLocation, val storePhone: String, val storeDesc: String, val storeId : String, val storeImage: ImageDTO, val stampsum : Int, val award : String)
+data class Store(
+    @SerializedName("storeName")
+    val storeName: String,
+    @SerializedName("storeLocation")
+    val storeLocation: StoreLocation,
+    @SerializedName("storePhone")
+    val storePhone: String,
+    @SerializedName("storeDesc")
+    val storeDesc: String,
+    @SerializedName("storeId")
+    val storeId: String,
+)

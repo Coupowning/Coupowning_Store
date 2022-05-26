@@ -15,7 +15,6 @@ import kr.ac.coukingmama.storeapp.certified.SettingActivity
 import kr.ac.coukingmama.storeapp.database.Store
 import kr.ac.coukingmama.storeapp.database.StoreLocation
 import kr.ac.coukingmama.storeapp.databinding.ActivityRegisterBinding
-import kr.ac.coukingmama.storeapp.recyclerview.ImageDTO
 import kr.ac.coukingmama.storeapp.recyclerview.ListItemAdapter
 
 class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
@@ -54,11 +53,8 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                     binding.etstorename.text.toString(),
                     StoreLocation("1", "2", "3"),
                     binding.phonenum.text.toString(),
-                    binding.intro.text.toString(),
+                    binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.award.text.toString(),
                     "ohksj77@naver.com",
-                    ImageDTO(uriToBitmap(uri!!)),
-                    binding.stampsum.text.toString().toInt(),
-                    binding.award.text.toString()
                 )
                 val storage = FirebaseStorage.getInstance()
                 val storageRef = storage.reference

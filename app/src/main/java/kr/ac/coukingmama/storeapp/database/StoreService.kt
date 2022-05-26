@@ -6,11 +6,10 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface StoreService {
-
-    @POST("posts")
+    @POST("/stores")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun postStore(
         @Body store : Store
-    ): Call<Store>
+    ): Call<String>
 }

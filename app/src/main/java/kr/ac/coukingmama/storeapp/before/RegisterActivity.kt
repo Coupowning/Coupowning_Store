@@ -7,15 +7,24 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import kr.ac.coukingmama.storeapp.certified.SettingActivity
 import kr.ac.coukingmama.storeapp.database.Store
 import kr.ac.coukingmama.storeapp.database.StoreLocation
+import kr.ac.coukingmama.storeapp.database.StoreService
 import kr.ac.coukingmama.storeapp.databinding.ActivityRegisterBinding
 import kr.ac.coukingmama.storeapp.recyclerview.ListItemAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
 
@@ -47,15 +56,36 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         binding.modifystore.setOnClickListener {
             var storeInfo: Store? = null
             if (binding.intro.text.toString().trim().isNotEmpty() && binding.stampsum.text.toString().trim().isNotEmpty() && binding.num.text.toString().trim().isNotEmpty() && binding.award.text.toString().trim().isNotEmpty() &&
-                binding.phonenum.text.toString().trim().isNotEmpty() && binding.etstorename.text.toString().trim().isNotEmpty() // etaddress 넣어야함
+                binding.phonenum.text.toString().trim().isNotEmpty() && binding.etstorename.text.toString().trim().isNotEmpty()
             ) {
+//                storeInfo = Store(
+//                    binding.etstorename.text.toString(),
+//                    StoreLocation("경기도", "2,1", "3.2"),
+//                    binding.phonenum.text.toString(),
+//                    binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.award.text.toString(),
+//                    "ohksj77@naver.com", arrayListOf("www.a.a", "www.b.b")
+                var map : MutableMap<String, String> = mutableMapOf()
+                map["1"] = "www.minwoong.com"
                 storeInfo = Store(
-                    binding.etstorename.text.toString(),
-                    StoreLocation("1", "2", "3"),
-                    binding.phonenum.text.toString(),
-                    binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.award.text.toString(),
-                    "ohksj77@naver.com",
+                    "라떼는말이야",
+                    StoreLocation("경기도", "2,1", "3.2"),
+                    "01012345678",
+                    "민웅이를 드립니다.",
+                    "ohksj77@naver.com", map
                 )
+                val gson : Gson = GsonBuilder().setLenient().create()
+                val retrofit = Retrofit.Builder().baseUrl("https://us-central1-coupowning.cloudfunctions.net/widgets/").addConverterFactory(GsonConverterFactory.create(gson)).build()
+                val api = retrofit.create(StoreService::class.java)
+                val callPost = api.postStore(storeInfo).enqueue(object : Callback<String> {
+                    override fun onResponse(call: Call<String>, response: Response<String>) {
+                        val string = response.body()
+                        Log.d("response", " 전송> $string")
+                    }
+
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                        Log.d("error", "에러>" + t.message.toString())
+                    }
+                })
                 val storage = FirebaseStorage.getInstance()
                 val storageRef = storage.reference
                 val fileName = "store${num++}.jpg"
@@ -64,7 +94,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                     val uploadTask = imageStorageRef.putFile(it)
                     uploadTask.addOnFailureListener {
                         it.printStackTrace()
-                    }.addOnSuccessListener { taskSnapshot ->
+                    }.addOnSuccessListener {
                         Toast.makeText(this, "가게가 등록/수정 되었습니다!", Toast.LENGTH_SHORT).show()
                         finish()
                     }.addOnCanceledListener {

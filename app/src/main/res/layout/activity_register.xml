@@ -56,8 +56,8 @@
         android:contentDescription="@string/search" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/storeimage"
-        android:layout_width="210dp"
+        android:id="@+id/list_item"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="72dp"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="284dp"
-        android:text="카페 302"
+        android:text="@string/storename"
         android:textColor="@color/blue"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -89,6 +89,19 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storename" />
+
+
+    <EditText
+        android:id="@+id/etstorename"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="112dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/storename"
+        app:layout_constraintTop_toBottomOf="@+id/addimage"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/intro"
@@ -148,7 +161,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginBottom="5dp"
         android:autofillHints="no"
-        android:inputType="number"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addr"
         app:layout_constraintStart_toEndOf="@+id/numofstamp"
         tools:ignore="LabelFor" />
@@ -171,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:autofillHints="no"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/benefit"
         app:layout_constraintTop_toBottomOf="@+id/stamp"
         tools:ignore="LabelFor" />

@@ -8,9 +8,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="250dp"
-        android:layout_marginStart="50dp"
         android:layout_marginBottom="300dp"
         android:contentDescription="@string/app_logo"
         android:src="@drawable/logo2"
@@ -29,10 +28,11 @@
         android:backgroundTint="@color/kakaoyellow"
         android:contentDescription="@string/kakao"
         android:drawableLeft="@drawable/kakaologo"
-        android:paddingLeft="90dp"
-        android:paddingRight="90dp"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
         android:text="카카오로 시작하기"
         android:textColor="@color/kakaolabel"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +48,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/google"
-        android:paddingLeft="80dp"
-        android:paddingRight="80dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:textSize="16dp"
         android:text="Google로 시작하기"
         android:textColor="@color/black"
         android:drawableLeft="@drawable/googlelogo"/>

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ExperimentalGetImage
-import kotlinx.android.synthetic.main.activity_accumulate.*
 import kr.ac.coukingmama.storeapp.databinding.ActivityAccumulateBinding
 
 @ExperimentalGetImage
@@ -38,7 +37,7 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
 
         binding.finish.setOnClickListener{
             var str = "적립"
-            if(rdminus.isChecked){
+            if(binding.rdminus.isChecked){
                 str = "차감"
             }
             AlertDialog.Builder(this)

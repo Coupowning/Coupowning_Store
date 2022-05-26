@@ -1,6 +1,6 @@
 package kr.ac.coukingmama.storeapp.recyclerview
 
-class ImageDTO() { // 이미지 DTO
-    val imageUrl: String? = null
-    val uid: String? = null
+import android.graphics.Bitmap
+
+class ImageDTO(val imageUri: Bitmap? = null) { // 이미지 DTO
 }

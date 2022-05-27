@@ -14,5 +14,5 @@ data class Store(
     @SerializedName("storeId")
     val storeId: String,
     @SerializedName("storeImage")
-    val storeImage : MutableMap<String, String>
+    val storeImage : StoreImage
 )

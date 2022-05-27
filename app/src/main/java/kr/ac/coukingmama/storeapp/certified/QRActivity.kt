@@ -125,9 +125,14 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                 .addOnSuccessListener { barcodeList ->
                     val barcode = barcodeList.getOrNull(0)
                     barcode?.rawValue?.let { value ->
-                        Toast.makeText(this, "Barcode Value: $value", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, AccumulateActivity::class.java)
-                        startActivity(intent)
+                        if(value.contains("@") && value.split("@").lastIndex == 1){
+                            Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, AccumulateActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else{
+                            finish()
+                        }
                     }
                 }
                 .addOnFailureListener {

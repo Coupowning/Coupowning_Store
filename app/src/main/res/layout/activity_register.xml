@@ -155,7 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
     <EditText
-        android:id="@+id/num"
+        android:id="@+id/award"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
@@ -175,11 +175,11 @@
         android:text="@string/num"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/award"
+        app:layout_constraintStart_toEndOf="@+id/num"
         app:layout_constraintTop_toBottomOf="@+id/stampsum" />
 
     <EditText
-        android:id="@+id/award"
+        android:id="@+id/num"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -220,7 +220,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/address"
-        app:layout_constraintTop_toBottomOf="@+id/award"
+        app:layout_constraintTop_toBottomOf="@+id/num"
         tools:ignore="LabelFor" />
 
     <EditText
@@ -230,7 +230,7 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/award"
+        app:layout_constraintTop_toBottomOf="@+id/num"
         android:autofillHints="no"
         android:inputType="text"
         tools:ignore="LabelFor"

@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="284dp"
-        android:text="카페 302"
+        android:text=""
         android:textColor="@color/blue"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginBottom="22dp"
-        android:text="분위기 좋은 카페"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/stamp"
         app:layout_constraintStart_toEndOf="@+id/introduce" />
 
@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginTop="22dp"
-        android:text="10"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/stamp"
         app:layout_constraintTop_toBottomOf="@+id/intro"
         android:id="@+id/stampsum"/>
@@ -133,7 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="20dp"
-        android:text="10"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/benefit"
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
@@ -158,7 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
-        android:text="아메리카노 1잔"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/benefit"
         app:layout_constraintTop_toBottomOf="@+id/stampsum" />
 
@@ -182,21 +182,44 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
-        android:text="경기도 시흥시 정왕동..."
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/address"
         app:layout_constraintTop_toBottomOf="@+id/award" />
 
-    <ImageView
+    <TextView
+        android:id="@+id/phonenum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/suncheonb"
+        android:text="@string/phonenum"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="91dp"
+        android:fontFamily="@font/nanumgothic"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/phonenum"
+        app:layout_constraintTop_toBottomOf="@+id/stamp" />
+
+    <ImageView
         android:id="@+id/modifystore"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginEnd="27dp"
         android:contentDescription="@string/modifystore"
+        android:fontFamily="@font/suncheonb"
         android:src="@drawable/modifystore"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addr"
-        app:layout_constraintTop_toBottomOf="@+id/addr" />
+        app:layout_constraintTop_toBottomOf="@+id/phonenum" />
 
     <ImageView
         android:id="@+id/camerabutton"

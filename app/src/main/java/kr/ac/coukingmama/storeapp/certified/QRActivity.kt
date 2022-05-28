@@ -16,16 +16,13 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
-import kr.ac.coukingmama.storeapp.MainActivity
 import kr.ac.coukingmama.storeapp.databinding.ActivityQrBinding
 import java.util.concurrent.Executors
-
-
-private const val CAMERA_PERMISSION_REQUEST_CODE = 1
 
 @ExperimentalGetImage
 class QRActivity : AppCompatActivity() { // QR인식 페이지
 
+    private val CAMERA_PERMISSION_REQUEST_CODE = 1
     private lateinit var binding: ActivityQrBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +80,6 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
             ).build()
             val scanner = BarcodeScanning.getClient(options)
 
-            // setting up the analysis use case
             val analysisUseCase = ImageAnalysis.Builder()
                 .build()
             analysisUseCase.setAnalyzer(
@@ -92,7 +88,6 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                 processImageProxy(scanner, imageProxy)
             }
 
-            // configure to use the back camera
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
             try {
@@ -102,9 +97,9 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                     previewUseCase,
                     analysisUseCase)
             } catch (illegalStateException: IllegalStateException) {
-                Log.e(TAG, illegalStateException.message.orEmpty())
+                Log.e("TAG", illegalStateException.message.orEmpty())
             } catch (illegalArgumentException: IllegalArgumentException) {
-                Log.e(TAG, illegalArgumentException.message.orEmpty())
+                Log.e("TAG", illegalArgumentException.message.orEmpty())
             }
         }, ContextCompat.getMainExecutor(this))
     }
@@ -136,16 +131,11 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                     }
                 }
                 .addOnFailureListener {
-                    Log.e(TAG, it.message.orEmpty())
+                    Log.e("TAG", it.message.orEmpty())
                 }.addOnCompleteListener {
                     imageProxy.image?.close()
                     imageProxy.close()
                 }
         }
     }
-
-    companion object {
-        val TAG: String = MainActivity::class.java.simpleName
-    }
-
 }

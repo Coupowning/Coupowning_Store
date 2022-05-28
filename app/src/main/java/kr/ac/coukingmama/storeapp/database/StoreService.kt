@@ -22,6 +22,12 @@ interface StoreService {
         @Path("storeId") storeId: String
     ) : Call<Store>
 
+    @POST("addCoupon/{userId}")
+    fun addCoupon(
+        @Path("userId") userId: String,
+        @Body coupon: Coupon
+    ) : Call<Coupon>
+
     companion object{
         private const val BASE_URL = "https://us-central1-coupowning.cloudfunctions.net/widgets/"
 

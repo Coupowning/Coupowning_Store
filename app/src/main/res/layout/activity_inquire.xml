@@ -44,12 +44,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_item"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:clipToPadding="false"/>
 
     <TextView
         android:fontFamily="@font/nanumgothic"
@@ -139,12 +140,12 @@
 
 
     <TextView
-        android:fontFamily="@font/suncheonb"
         android:id="@+id/numofstamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="@font/suncheonb"
         android:text="@string/num"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -152,14 +153,14 @@
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
     <TextView
-        android:fontFamily="@font/nanumgothic"
         android:id="@+id/award"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/nanumgothic"
         android:text=""
-        app:layout_constraintStart_toEndOf="@+id/benefit"
+        app:layout_constraintStart_toEndOf="@+id/numofstamp"
         app:layout_constraintTop_toBottomOf="@+id/stampsum" />
 
     <TextView

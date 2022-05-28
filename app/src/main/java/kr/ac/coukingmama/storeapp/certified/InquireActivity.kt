@@ -18,6 +18,7 @@ import kr.ac.coukingmama.storeapp.database.StoreService
 import kr.ac.coukingmama.storeapp.databinding.ActivityInquireBinding
 import kr.ac.coukingmama.storeapp.recyclerview.ImageDTO
 import kr.ac.coukingmama.storeapp.recyclerview.ListItemAdapter
+import kr.ac.coukingmama.storeapp.recyclerview.RecyclerviewDecoration
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +30,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
     private lateinit var listAdapter: ListItemAdapter
     private var num : Int = 1
     var strings : ArrayList<String> = arrayListOf()
+    var list: MutableList<ImageDTO> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +40,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
         binding.listItem.adapter = listAdapter
         binding.listItem.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val storage = FirebaseStorage.getInstance()
-        val storageRef = storage.reference
-
+        binding.listItem.addItemDecoration(RecyclerviewDecoration(30))
         binding.modifystore.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java) // 가게 등록 페이지
             intent.putExtra("inform", strings)
@@ -54,7 +54,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
             val intent = Intent(this, SettingActivity::class.java) // 가게 수정 페이지
             startActivity(intent)
         }
-        val storeId : String = "kim" // 이부분은 수정해야 함
+        val storeId : String = "run" // 이부분은 수정해야 함
         val api = StoreService.create()
         val callGet = api.getStore(storeId).enqueue(object : Callback<Store> {
             override fun onResponse(call: Call<Store>, response: Response<Store>) {
@@ -65,14 +65,16 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
                     binding.phone.text = response.body()!!.storePhone
                     val str = response.body()!!.storeDesc.split("/")
                     binding.intro.text = str[0]
-                    binding.num.text = str[1]
-                    binding.award.text = str[2]
+                    binding.stampsum.text = str[1]
+                    binding.num.text = str[2]
+                    binding.award.text = str[3]
                     strings.add(response.body()!!.storeName)
                     strings.add(response.body()!!.storeLocation.locationKr)
                     strings.add(response.body()!!.storePhone)
                     strings.add(str[0])
                     strings.add(str[1])
                     strings.add(str[2])
+                    strings.add(str[3])
                 }
                 else
                     Log.d("response", " HTTP Status Code > ${response.code()}")
@@ -81,7 +83,8 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
                 Log.d("error", "ERROR message>" + t.message.toString())
             }
         })
-
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
         val imageStorageRef = storageRef.child("image")
 
         imageStorageRef.listAll().addOnSuccessListener{

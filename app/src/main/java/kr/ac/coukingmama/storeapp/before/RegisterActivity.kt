@@ -15,7 +15,9 @@ import com.google.firebase.storage.FirebaseStorage
 import kr.ac.coukingmama.storeapp.certified.SettingActivity
 import kr.ac.coukingmama.storeapp.database.*
 import kr.ac.coukingmama.storeapp.databinding.ActivityRegisterBinding
+import kr.ac.coukingmama.storeapp.recyclerview.ImageDTO
 import kr.ac.coukingmama.storeapp.recyclerview.ListItemAdapter
+import kr.ac.coukingmama.storeapp.recyclerview.RecyclerviewDecoration
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,13 +44,32 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
             binding.etaddress.setText(strings[1])
             binding.phonenum.setText(strings[2])
             binding.intro.setText(strings[3])
-            binding.num.setText(strings[4])
-            binding.award.setText(strings[5])
+            binding.stampsum.setText(strings[4])
+            binding.num.setText(strings[5])
+            binding.award.setText(strings[6])
+            val storage = FirebaseStorage.getInstance()
+            val storageRef = storage.reference
+            val imageStorageRef = storageRef.child("image")
+
+            imageStorageRef.listAll().addOnSuccessListener{
+                it.items.forEach{
+                    it.downloadUrl.addOnSuccessListener{
+                        var image : ImageDTO = ImageDTO()
+                        image.uri = it
+                        listAdapter.setListData(image)
+                        num++;
+                    }
+                }
+            }.addOnCanceledListener {
+
+            }.addOnFailureListener {
+
+            }
         }
         binding.listItem.adapter = listAdapter
         binding.listItem.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
+        binding.listItem.addItemDecoration(RecyclerviewDecoration(30))
         binding.settingimage.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java) // 설정 페이지
             startActivity(intent)
@@ -56,7 +77,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         binding.addimage.setOnClickListener {
             val intent: Intent = Intent(Intent.ACTION_PICK)
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
-            startActivityForResult(intent, GET_GALLERY_IMAGE) // uri 에 사진 대입해야함
+            startActivityForResult(intent, GET_GALLERY_IMAGE)
         }
         binding.modifystore.setOnClickListener {
             var storeInfo: Store? = null
@@ -70,7 +91,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                     StoreLocation("경기도", "2,1", "3.2"),
                     binding.phonenum.text.toString(),
                     binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.num.text.toString() + "/" + binding.award.text.toString(),
-                    "kim", StoreImage(images))
+                    "run", StoreImage(images)) // id 변경해줄 것
 
                 val api = StoreService.create()
                 val callPost = api.postStore(storeInfo).enqueue(object : Callback<Store> {

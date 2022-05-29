@@ -19,5 +19,12 @@ class CertificateActivity : AppCompatActivity() { // 사업자 인증 페이지
             val intent = Intent(this, SettingActivity::class.java) // 설정 페이지
             startActivity(intent)
         }
+        binding.certificate.setOnClickListener{
+            if(binding.name.text.isNotEmpty() && binding.opdate.text.isNotEmpty() && binding.reginum.text.isNotEmpty()){
+                val intent = Intent(this, RegisterActivity::class.java) // 가게 등록 페이지
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 }

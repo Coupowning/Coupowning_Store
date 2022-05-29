@@ -37,8 +37,6 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
         binding = ActivityInquireBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        Toast.makeText(this, Utility.getKeyHash(this), Toast.LENGTH_SHORT).show()
-
         listAdapter = ListItemAdapter(this)
         binding.listItem.adapter = listAdapter
         binding.listItem.layoutManager =
@@ -57,7 +55,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
             val intent = Intent(this, SettingActivity::class.java) // 가게 수정 페이지
             startActivity(intent)
         }
-        val storeId : String = "run" // 이부분은 수정해야 함
+        val storeId : String = "cafe302" // 이부분은 수정해야 함
         val api = StoreService.create()
         val callGet = api.getStore(storeId).enqueue(object : Callback<Store> {
             override fun onResponse(call: Call<Store>, response: Response<Store>) {

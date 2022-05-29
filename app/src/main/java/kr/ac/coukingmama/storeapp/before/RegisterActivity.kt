@@ -1,5 +1,6 @@
 package kr.ac.coukingmama.storeapp.before
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -8,11 +9,11 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.webkit.WebView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.storage.FirebaseStorage
+import kr.ac.coukingmama.storeapp.MainActivity
 import kr.ac.coukingmama.storeapp.certified.SettingActivity
 import kr.ac.coukingmama.storeapp.database.*
 import kr.ac.coukingmama.storeapp.databinding.ActivityRegisterBinding
@@ -32,16 +33,15 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
     private var num : Int = 1
     private val GET_GALLERY_IMAGE : Int = 200
     lateinit var strings : ArrayList<String>
-    lateinit var webView : WebView
 
+    @SuppressLint("UnsafeOptInUsageError")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var i = intent
-        if(i.getStringArrayListExtra("inform") != null){
-            strings = i.getStringArrayListExtra("inform")!!
-            listAdapter = ListItemAdapter(this)
+        listAdapter = ListItemAdapter(this)
+        if(intent.getStringArrayListExtra("inform") != null){
+            strings = intent.getStringArrayListExtra("inform")!!
             binding.etstorename.setText(strings[0])
             binding.etaddress.setText(strings[1])
             binding.phonenum.setText(strings[2])
@@ -95,10 +95,11 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                 images.add(ImageData("1", "www.a.a"))
                 storeInfo = Store(
                     binding.etstorename.text.toString(),
-                    StoreLocation("경기도", "2,1", "3.2"),
+                    StoreLocation("경기도 시흥시 산기대학로...", "2,1", "3.2"),
                     binding.phonenum.text.toString(),
                     binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.num.text.toString() + "/" + binding.award.text.toString(),
-                    "run", StoreImage(images)) // id 변경해줄 것
+                    "cafe302", // id 변경해줄 것
+                    StoreImage(images))
 
                 val api = StoreService.create()
                 val callPost = api.postStore(storeInfo).enqueue(object : Callback<Store> {
@@ -122,6 +123,8 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                         it.printStackTrace()
                     }.addOnSuccessListener {
                         Toast.makeText(this, "가게가 등록/수정 되었습니다!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainActivity::class.java).putExtra("registered", true)
+                        startActivity(intent)
                         finish()
                     }.addOnCanceledListener {
                         Toast.makeText(this, "<오류>", Toast.LENGTH_SHORT).show()
@@ -130,8 +133,8 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
             }
         }
         binding.search.setOnClickListener{
-            val intent = Intent(this, AddressActivity::class.java) // 주소 검색 페이지
-            startActivity(intent)
+//            val intent = Intent(this, AddressActivity::class.java) // 주소 검색 페이지
+//            startActivity(intent)
         }
     }
 

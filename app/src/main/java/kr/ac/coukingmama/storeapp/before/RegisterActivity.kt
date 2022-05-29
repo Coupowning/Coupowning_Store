@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.webkit.WebView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +32,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
     private var num : Int = 1
     private val GET_GALLERY_IMAGE : Int = 200
     lateinit var strings : ArrayList<String>
+    lateinit var webView : WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +68,11 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
 
             }
         }
+
+        if(intent.getStringExtra("address") != null)
+            binding.etaddress.setText(intent.getStringExtra("address"))
+
+
         binding.listItem.adapter = listAdapter
         binding.listItem.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -121,6 +128,10 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                     }
                 }
             }
+        }
+        binding.search.setOnClickListener{
+            val intent = Intent(this, AddressActivity::class.java) // 주소 검색 페이지
+            startActivity(intent)
         }
     }
 

@@ -1,1 +1,12 @@
 /build
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+app/src/main/res/values/kakao_app_key.xml
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json

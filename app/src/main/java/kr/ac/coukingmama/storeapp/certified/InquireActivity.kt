@@ -36,6 +36,9 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
         super.onCreate(savedInstanceState)
         binding = ActivityInquireBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        Toast.makeText(this, Utility.getKeyHash(this), Toast.LENGTH_SHORT).show()
+
         listAdapter = ListItemAdapter(this)
         binding.listItem.adapter = listAdapter
         binding.listItem.layoutManager =

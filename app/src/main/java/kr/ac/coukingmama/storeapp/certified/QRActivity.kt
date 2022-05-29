@@ -126,6 +126,7 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                             startActivity(intent)
                         }
                         else{
+                            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                             finish()
                         }
                     }

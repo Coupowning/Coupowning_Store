@@ -19,12 +19,15 @@ import retrofit2.Response
 class AccumulateActivity : AppCompatActivity() { // 적립 페이지
 
     lateinit var binding : ActivityAccumulateBinding
+    private var userId : String? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAccumulateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        userId = intent.getStringExtra("userId")
 
         binding.back.setOnClickListener{
             val intent = Intent(this, InquireActivity::class.java)
@@ -47,7 +50,6 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
             if(binding.rdminus.isChecked){
                 str = "차감"
             }
-            val userId = "33@33"
             val storeId = "kevinkim3"
             var coupon : Coupon? = null
             if(binding.rdminus.isChecked)
@@ -55,7 +57,7 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
             else if(binding.rdplus.isChecked)
                 coupon =  Coupon(storeId, binding.numofstamp.text.toString())
             val api = StoreService.create()
-            val callPost = api.addCoupon(userId, coupon!!).enqueue(object : Callback<Coupon> {
+            val callPost = api.addCoupon(userId!!, coupon!!).enqueue(object : Callback<Coupon> {
                 override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                     if(response.isSuccessful)
                         Log.d("response", " HTTP Status Code > ${response.code()} \n ${response.body()}")

@@ -1,7 +1,6 @@
 package kr.ac.coukingmama.storeapp.recyclerview
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +18,7 @@ class ListItemAdapter(val context: Context, private var imageDTOList: MutableLis
         var imageView: ImageView? = itemView.findViewById<ImageView>(R.id.item)
 
         fun onBind(data: ImageDTO) {
-            if(data.uri != null)
-                Glide.with(context).asBitmap().load(data.uri).centerCrop().into(imageView!!)
-            else
-                imageView!!.setImageBitmap(data.image)
+            Glide.with(context).asBitmap().load(data.uri).centerCrop().into(imageView!!)
         }
     }
 
@@ -39,10 +35,6 @@ class ListItemAdapter(val context: Context, private var imageDTOList: MutableLis
         return imageDTOList.size
     }
 
-    fun setListData(it: Bitmap) {
-        imageDTOList.add(ImageDTO(it))
-        notifyDataSetChanged()
-    }
     fun setListData(it: ImageDTO){
         imageDTOList.add(it)
         notifyDataSetChanged()

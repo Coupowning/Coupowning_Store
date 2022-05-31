@@ -1,12 +1,7 @@
 package kr.ac.coukingmama.storeapp.certified
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ExperimentalGetImage
@@ -91,9 +86,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
         imageStorageRef.listAll().addOnSuccessListener{
             it.items.forEach{
                 it.downloadUrl.addOnSuccessListener{
-                    var image : ImageDTO = ImageDTO()
-                    image.uri = it
-                    listAdapter.setListData(image)
+                    listAdapter.setListData(ImageDTO(it))
                 }
             }
         }.addOnCanceledListener {
@@ -101,27 +94,5 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
         }.addOnFailureListener {
 
         }
-    }
-    private fun uriToBitmap(uri : Uri) : Bitmap {
-        var bitmap : Bitmap? = null
-        var u = Uri.parse(uri.toString())
-        try {
-            uri.let {
-                if(Build.VERSION.SDK_INT < 28) {
-                    bitmap = MediaStore.Images.Media.getBitmap(
-                        contentResolver,
-                        u
-                    )
-                    listAdapter.setListData(bitmap!!)
-                } else {
-                    val source = ImageDecoder.createSource(contentResolver, u)
-                    bitmap = ImageDecoder.decodeBitmap(source)
-                    listAdapter.setListData(bitmap!!)
-                }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return bitmap!!
     }
 }

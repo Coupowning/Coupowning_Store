@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() { // 로그인 페이지
 //                storeId = user!!.id.toString()
             }
             Log.d("login","로그인성공")
-            startActivity(Intent(application, CertificateActivity::class.java));
+            startActivity(Intent(application, RegisterActivity::class.java));
             finish()
         }
     }

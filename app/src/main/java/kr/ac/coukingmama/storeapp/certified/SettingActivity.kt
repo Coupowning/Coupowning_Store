@@ -49,5 +49,29 @@ class SettingActivity : AppCompatActivity() { // 설정 페이지
             }
             alert.show()
         }
+        binding.leave.setOnClickListener{
+            val alert : android.app.AlertDialog = android.app.AlertDialog.Builder(this)
+                .setTitle("회원 탈퇴하시겠습니까?")
+                .setNegativeButton("취소", null)
+                .setPositiveButton("회원 탈퇴") { dialog, _ -> dialog.dismiss()
+                    UserApiClient.instance.logout { error ->
+                        if(error != null){
+                            Log.e("error", "탈퇴 실패", error)
+                        }
+                        else{
+                            Log.i("success", "탈퇴 성공")
+                            val intent = Intent(applicationContext, MainActivity::class.java)
+                            intent.putExtra("registered", false)
+                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                            finish()
+                        }
+                    }
+                }.create()
+            alert.setOnShowListener {
+                alert.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+                alert.getButton(android.app.AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+            }
+            alert.show()
+        }
     }
 }

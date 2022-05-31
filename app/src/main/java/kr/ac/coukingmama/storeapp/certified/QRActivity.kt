@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +17,15 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
+import kr.ac.coukingmama.storeapp.R
 import kr.ac.coukingmama.storeapp.databinding.ActivityQrBinding
+import java.nio.charset.StandardCharsets
+import java.security.DigestException
+import java.security.MessageDigest
 import java.util.concurrent.Executors
+import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
 
 @ExperimentalGetImage
 class QRActivity : AppCompatActivity() { // QR인식 페이지
@@ -120,9 +128,17 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                 .addOnSuccessListener { barcodeList ->
                     val barcode = barcodeList.getOrNull(0)
                     barcode?.rawValue?.let { value ->
-                        if(value.contains("@") && value.split("@").lastIndex == 1){
+                        if(value.isNotEmpty()){
+                            val charset = StandardCharsets.UTF_8
+                            val iv = ByteArray(16)
+                            val keySpec = SecretKeySpec(hashSHA256(getString(R.string.password)), "AES")
+                            val cipher_dec = Cipher.getInstance("AES/CBC/PKCS7Padding")
+                            cipher_dec.init(Cipher.DECRYPT_MODE, keySpec, IvParameterSpec(iv))
+                            val byteDecryptedText = cipher_dec.doFinal(Base64.decode(value, Base64.DEFAULT))
+                            Log.d("qrcode", value)
+                            Log.d("qrcode", byteDecryptedText.toString(charset))
                             Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, AccumulateActivity::class.java)
+                            val intent = Intent(this, AccumulateActivity::class.java).putExtra("userId", byteDecryptedText.toString(charset))
                             startActivity(intent)
                         }
                         else{
@@ -138,5 +154,16 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                     imageProxy.close()
                 }
         }
+    }
+    fun hashSHA256(msg: String): ByteArray {
+        val hash: ByteArray
+        try {
+            val md = MessageDigest.getInstance("SHA-256")
+            md.update(msg.toByteArray())
+            hash = md.digest()
+        } catch (e: CloneNotSupportedException) {
+            throw DigestException("couldn't make digest of partial content")
+        }
+        return hash
     }
 }

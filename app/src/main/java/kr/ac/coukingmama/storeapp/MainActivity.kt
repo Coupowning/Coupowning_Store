@@ -8,8 +8,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ExperimentalGetImage
 import com.kakao.sdk.user.UserApiClient
-import kr.ac.coukingmama.storeapp.before.CertificateActivity
 import kr.ac.coukingmama.storeapp.before.LoginActivity
+import kr.ac.coukingmama.storeapp.before.RegisterActivity
 import kr.ac.coukingmama.storeapp.certified.InquireActivity
 import kr.ac.coukingmama.storeapp.databinding.ActivityMainBinding
 
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                     finish()
                 }
                 else{
-                    val intent = Intent(this, CertificateActivity::class.java)
+                    val intent = Intent(this, RegisterActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

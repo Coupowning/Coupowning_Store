@@ -10,7 +10,9 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
+# keys
 app/src/main/res/values/kakao_app_key.xml
+app/src/main/res/values/hash_key.xml
 
 # Google Services (e.g. APIs or Firebase)
 google-services.json

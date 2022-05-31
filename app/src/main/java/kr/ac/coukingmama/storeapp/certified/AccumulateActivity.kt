@@ -20,6 +20,7 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
 
     lateinit var binding : ActivityAccumulateBinding
     private var userId : String? = null
+    private lateinit var max : String
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
         binding = ActivityAccumulateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        max = intent.getStringExtra("max")!!
         userId = intent.getStringExtra("userId")
 
         binding.back.setOnClickListener{
@@ -42,7 +44,9 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
         }
 
         binding.plus.setOnClickListener{
-            binding.numofstamp.text = (binding.numofstamp.text.toString().toInt() + 1).toString()
+            if(binding.numofstamp.text.toString().toInt() < max.toInt()){
+                binding.numofstamp.text = (binding.numofstamp.text.toString().toInt() + 1).toString()
+            }
         }
 
         binding.finish.setOnClickListener{

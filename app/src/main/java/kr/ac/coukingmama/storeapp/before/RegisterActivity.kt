@@ -31,7 +31,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
     private var uri : Uri? = null
     private var num : Int = 1
     private val GET_GALLERY_IMAGE : Int = 200
-    lateinit var strings : ArrayList<String>
+    private var strings : ArrayList<String>? = null
     private var longitude : Double? = null
     private var latitude : Double? = null
 
@@ -42,14 +42,15 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         setContentView(binding.root)
         listAdapter = ListItemAdapter(this)
         if(intent.getStringArrayListExtra("inform") != null){
+            binding.modifystore.text = "가게 수정"
             strings = intent.getStringArrayListExtra("inform")!!
-            binding.etstorename.setText(strings[0])
-            binding.etaddress.setText(strings[1])
-            binding.phonenum.setText(strings[2])
-            binding.intro.setText(strings[3])
-            binding.stampsum.setText(strings[4])
-            binding.num.setText(strings[5])
-            binding.award.setText(strings[6])
+            binding.etstorename.setText(strings!![0])
+            binding.etaddress.setText(strings!![1])
+            binding.phonenum.setText(strings!![2])
+            binding.intro.setText(strings!![3])
+            binding.stampsum.setText(strings!![4])
+            binding.num.setText(strings!![5])
+            binding.award.setText(strings!![6])
             val storage = FirebaseStorage.getInstance()
             val storageRef = storage.reference
             val imageStorageRef = storageRef.child("image")
@@ -66,6 +67,8 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
             }.addOnFailureListener {
 
             }
+        } else {
+            binding.modifystore.text = "가게 등록"
         }
 
         latitude = intent.getDoubleExtra("x", -1.0)
@@ -136,7 +139,17 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
             }
         }
         binding.search.setOnClickListener{
-            val intent = Intent(this, AddressActivity::class.java).putExtra("inform", strings) // 주소 검색 페이지
+            val intent = Intent(this, AddressActivity::class.java)
+            if(strings != null) {
+                strings!![0] = binding.etstorename.text.toString()
+                strings!![1] = binding.etaddress.text.toString()
+                strings!![2] = binding.phonenum.text.toString()
+                strings!![3] = binding.intro.text.toString()
+                strings!![4] = binding.stampsum.text.toString()
+                strings!![5] = binding.num.text.toString()
+                strings!![6] = binding.award.text.toString()
+                intent.putExtra("inform", strings)
+            }
             startActivity(intent)
         }
     }

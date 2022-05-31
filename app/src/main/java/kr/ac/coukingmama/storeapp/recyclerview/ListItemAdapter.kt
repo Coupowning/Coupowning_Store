@@ -18,6 +18,7 @@ class ListItemAdapter(val context: Context, private var imageDTOList: MutableLis
         var imageView: ImageView? = itemView.findViewById<ImageView>(R.id.item)
 
         fun onBind(data: ImageDTO) {
+            imageView!!.clipToOutline = true
             Glide.with(context).asBitmap().load(data.uri).centerCrop().into(imageView!!)
         }
     }

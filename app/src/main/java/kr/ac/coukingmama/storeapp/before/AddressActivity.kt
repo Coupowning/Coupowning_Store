@@ -23,7 +23,7 @@ class AddressActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var naverMap: NaverMap
     var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
     lateinit var binding : ActivityAddressBinding
-    var strings : ArrayList<String> = arrayListOf()
+    private var strings : ArrayList<String>? = null
     lateinit var mapView : MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,12 @@ class AddressActivity : AppCompatActivity(), OnMapReadyCallback {
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
         mapView = binding.navermap
         mapView.getMapAsync(this)
-        strings = intent.getStringArrayListExtra("inform")!!
+        if(intent.getStringArrayListExtra("inform") != null){
+            strings = intent.getStringArrayListExtra("inform")!!
+        }
+        binding.back.setOnClickListener{
+            finish()
+        }
     }
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap

@@ -13,6 +13,7 @@
         android:background="@color/white"
         app:contentInsetStart="0dp"
         app:layout_constraintTop_toTopOf="parent"
+        android:elevation="20dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <ImageView
@@ -211,14 +212,18 @@
         app:layout_constraintStart_toEndOf="@+id/phonenum"
         app:layout_constraintTop_toBottomOf="@+id/stamp" />
 
-    <ImageView
+    <TextView
         android:id="@+id/modifystore"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginEnd="27dp"
         android:contentDescription="@string/modifystore"
         android:fontFamily="@font/suncheonb"
-        android:src="@drawable/modifystore"
+        android:text="@string/modifystore"
+        android:textSize="15dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phonenum" />
 

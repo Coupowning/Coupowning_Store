@@ -32,12 +32,13 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
 
     private val CAMERA_PERMISSION_REQUEST_CODE = 1
     private lateinit var binding: ActivityQrBinding
+    private lateinit var max: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        max = intent.getStringExtra("max")!!
         if (hasCameraPermission()) bindCameraUseCases()
         else requestPermission()
     }
@@ -137,8 +138,7 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                             val byteDecryptedText = cipher_dec.doFinal(Base64.decode(value, Base64.DEFAULT))
                             Log.d("qrcode", value)
                             Log.d("qrcode", byteDecryptedText.toString(charset))
-                            Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, AccumulateActivity::class.java).putExtra("userId", byteDecryptedText.toString(charset))
+                            val intent = Intent(this, AccumulateActivity::class.java).putExtra("userId", byteDecryptedText.toString(charset)).putExtra("max", max)
                             startActivity(intent)
                         }
                         else{

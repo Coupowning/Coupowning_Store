@@ -43,7 +43,7 @@ class InquireActivity : AppCompatActivity() { // 조회 페이지
             startActivity(intent)
         }
         binding.camerabutton.setOnClickListener {
-            val intent = Intent(this, QRActivity::class.java) // QR 인식 페이지
+            val intent = Intent(this, QRActivity::class.java).putExtra("max", binding.stampsum.text) // QR 인식 페이지
             startActivity(intent)
         }
         binding.settingimage.setOnClickListener {

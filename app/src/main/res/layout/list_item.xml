@@ -8,6 +8,7 @@
         android:id="@+id/item"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:contentDescription="@string/item_list" />
+        android:contentDescription="@string/item_list"
+        android:background="@drawable/radius"/>
 
 </LinearLayout>

@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/checked" android:state_checked="true" />
+    <item android:drawable="@drawable/unchecked" android:state_checked="false" />
+    <item android:drawable="@drawable/unchecked" />   <!-- 아무 상태도 지정하지 않으면 기본 값 -->
+</selector>

@@ -13,6 +13,7 @@ lint/tmp/
 # keys
 /src/main/res/values/kakao_app_key.xml
 /src/main/res/values/hash_key.xml
+/src/main/res/values/naver_map_key.xml
 
 # Google Services (e.g. APIs or Firebase)
 google-services.json

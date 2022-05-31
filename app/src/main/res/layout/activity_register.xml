@@ -234,8 +234,7 @@
         app:layout_constraintTop_toBottomOf="@+id/num"
         android:autofillHints="no"
         android:inputType="text"
-        tools:ignore="LabelFor"
-        android:enabled="false"/>
+        tools:ignore="LabelFor" />
 
     <TextView
         android:layout_width="wrap_content"

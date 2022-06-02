@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() { // 스플래시 화면
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getWindow().setFlags( // 상단바 없애기
+        window.setFlags( // 상단바 없애기
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
         binding = ActivitySplashBinding.inflate(layoutInflater)

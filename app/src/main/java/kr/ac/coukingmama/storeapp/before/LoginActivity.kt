@@ -33,11 +33,10 @@ class LoginActivity : AppCompatActivity() { // 로그인 페이지
             UserApiClient.instance.me { user, error ->
                 if (user != null) {
                     storeId = user.id.toString()
-                    Log.d("storeId>>", storeId!!)
                     register(storeId!!)
                 }
                 if (error != null) {
-                    Log.e("error>>", "사용자 정보 요청 실패", error)
+                    Log.e("error", "사용자 정보 요청 실패", error)
                 }
             }
             Log.d("login", "로그인성공")

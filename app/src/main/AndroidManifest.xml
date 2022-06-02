@@ -58,7 +58,7 @@
         <activity
             android:name=".certified.QRActivity"
             android:exported="false"
-            android:noHistory="true" />
+            android:noHistory="true"/>
         <activity
             android:name=".before.CertificateActivity"
             android:exported="false"

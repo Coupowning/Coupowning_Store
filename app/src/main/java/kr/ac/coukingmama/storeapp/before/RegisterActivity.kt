@@ -47,7 +47,6 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         getExtra()
         if(storeId == null)
             loadData()
-        Log.d("saveStoreId", storeId!!)
 
         if(intent.getStringArrayListExtra("inform") != null){
             binding.modifystore.text = "가게 수정"
@@ -115,7 +114,6 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                         binding.phonenum.text.toString(),
                         binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.num.text.toString() + "/" + binding.award.text.toString(),
                         storeId!!, images)
-                    Log.d("storeId-확인", storeId!!)
                     val api = StoreService.create()
                     val callPost = api.postStore(storeInfo).enqueue(object : Callback<Store> {
                         override fun onResponse(call: Call<Store>, response: Response<Store>) {
@@ -180,7 +178,6 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         storeId = intent.getStringExtra("storeId")
         if(storeId != null) {
             saveData(storeId!!)
-            Log.d("스토어아이디:", storeId!!)
         }
     }
 }

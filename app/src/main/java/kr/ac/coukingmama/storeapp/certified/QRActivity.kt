@@ -6,12 +6,14 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.common.util.concurrent.ListenableFuture
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
@@ -34,11 +36,17 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
     private lateinit var binding: ActivityQrBinding
     private lateinit var max: String
     private var storeId : String? = null
+    private lateinit var imageAnalysis : ImageAnalysis
+    private lateinit var imageCapture : ImageCapture
+    private lateinit var cameraProviderFuture : ListenableFuture<ProcessCameraProvider>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.setFlags( // 상단바 없애기
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         storeId = intent.getStringExtra("storeId")
         max = intent.getStringExtra("max")!!
         if (hasCameraPermission()) bindCameraUseCases()
@@ -77,9 +85,9 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
     }
 
     private fun bindCameraUseCases() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
-        cameraProviderFuture.addListener({
+        cameraProviderFuture.addListener(Runnable{
             val cameraProvider = cameraProviderFuture.get()
             val previewUseCase = Preview.Builder()
                 .build()
@@ -91,13 +99,14 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
             ).build()
             val scanner = BarcodeScanning.getClient(options)
 
-            val analysisUseCase = ImageAnalysis.Builder()
+            imageAnalysis = ImageAnalysis.Builder()
                 .build()
-            analysisUseCase.setAnalyzer(
+            imageAnalysis.setAnalyzer(
                 Executors.newSingleThreadExecutor()
             ) { imageProxy ->
                 processImageProxy(scanner, imageProxy)
             }
+            imageCapture = ImageCapture.Builder().build()
 
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
@@ -106,7 +115,7 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                     this,
                     cameraSelector,
                     previewUseCase,
-                    analysisUseCase)
+                    imageAnalysis)
             } catch (illegalStateException: IllegalStateException) {
                 Log.e("TAG", illegalStateException.message.orEmpty())
             } catch (illegalArgumentException: IllegalArgumentException) {
@@ -138,8 +147,6 @@ class QRActivity : AppCompatActivity() { // QR인식 페이지
                             val cipher_dec = Cipher.getInstance("AES/CBC/PKCS7Padding")
                             cipher_dec.init(Cipher.DECRYPT_MODE, keySpec, IvParameterSpec(iv))
                             val byteDecryptedText = cipher_dec.doFinal(Base64.decode(value, Base64.DEFAULT))
-                            Log.d("qrcode", value)
-                            Log.d("qrcode", byteDecryptedText.toString(charset))
                             val intent = Intent(this, AccumulateActivity::class.java).putExtra("userId", byteDecryptedText.toString(charset)).putExtra("max", max).putExtra("storeId", storeId)
                             startActivity(intent)
                         }

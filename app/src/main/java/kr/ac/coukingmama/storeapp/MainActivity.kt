@@ -18,12 +18,14 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     private var isRegistered: Boolean = false
+    private var storeId : String? = null
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        storeId = intent.getStringExtra("storeId")
         isRegistered = intent.getBooleanExtra("registered", false)
         if(!isRegistered){
             loadData()
@@ -46,6 +48,9 @@ class MainActivity : AppCompatActivity() {
                 saveData(isRegistered)
                 if(isRegistered){
                     val intent = Intent(this, InquireActivity::class.java)
+                    if(storeId != null){
+                        intent.putExtra("storeId", storeId)
+                    }
                     startActivity(intent)
                     finish()
                 }

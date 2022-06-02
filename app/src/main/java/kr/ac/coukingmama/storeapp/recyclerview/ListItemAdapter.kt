@@ -40,4 +40,7 @@ class ListItemAdapter(val context: Context, private var imageDTOList: MutableLis
         imageDTOList.add(it)
         notifyDataSetChanged()
     }
+    fun getSize() : Int{
+        return imageDTOList.size
+    }
 }

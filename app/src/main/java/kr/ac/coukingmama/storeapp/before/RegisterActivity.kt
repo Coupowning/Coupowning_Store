@@ -1,6 +1,7 @@
 package kr.ac.coukingmama.storeapp.before
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -27,13 +28,15 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
 
     lateinit var binding : ActivityRegisterBinding
     private lateinit var listAdapter: ListItemAdapter
-    private var uriList : ArrayList<Uri> = arrayListOf<Uri>()
+    private var uriList : ArrayList<Uri> = arrayListOf()
     private var uri : Uri? = null
     private var num : Int = 1
+    private var cnt : Int = 0
     private val GET_GALLERY_IMAGE : Int = 200
     private var strings : ArrayList<String>? = null
     private var longitude : Double? = null
     private var latitude : Double? = null
+    private var storeId : String? = null
 
     @SuppressLint("UnsafeOptInUsageError")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,19 +44,26 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         listAdapter = ListItemAdapter(this)
+        getExtra()
+        if(storeId == null)
+            loadData()
+        Log.d("saveStoreId", storeId!!)
+
         if(intent.getStringArrayListExtra("inform") != null){
             binding.modifystore.text = "가게 수정"
             strings = intent.getStringArrayListExtra("inform")!!
-            binding.etstorename.setText(strings!![0])
-            binding.etaddress.setText(strings!![1])
-            binding.phonenum.setText(strings!![2])
-            binding.intro.setText(strings!![3])
-            binding.stampsum.setText(strings!![4])
-            binding.num.setText(strings!![5])
-            binding.award.setText(strings!![6])
+            if(strings!!.lastIndex == 6){
+                binding.etstorename.setText(strings!![0])
+                binding.etaddress.setText(strings!![1])
+                binding.phonenum.setText(strings!![2])
+                binding.intro.setText(strings!![3])
+                binding.stampsum.setText(strings!![4])
+                binding.num.setText(strings!![5])
+                binding.award.setText(strings!![6])
+            }
             val storage = FirebaseStorage.getInstance()
             val storageRef = storage.reference
-            val imageStorageRef = storageRef.child("image")
+            val imageStorageRef = storageRef.child(storeId!!)
 
             imageStorageRef.listAll().addOnSuccessListener{
                 it.items.forEach{
@@ -92,20 +102,20 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                 Toast.makeText(applicationContext, "지도에 가게를 표시해주세요.", Toast.LENGTH_SHORT).show()
             }
             else{
-                var storeInfo: Store? = null
                 if (binding.intro.text.toString().trim().isNotEmpty() && binding.stampsum.text.toString().trim().isNotEmpty() && binding.num.text.toString().trim().isNotEmpty() && binding.award.text.toString().trim().isNotEmpty() &&
-                    binding.phonenum.text.toString().trim().isNotEmpty() && binding.etstorename.text.toString().trim().isNotEmpty()
+                    binding.phonenum.text.toString().trim().isNotEmpty() && binding.etstorename.text.toString().trim().isNotEmpty() && binding.etaddress.text.toString().trim().isNotEmpty()
                 ) {
-                    val images = hashMapOf<Int, String>() // 이미지 정보는 추후에 DB에서 뺄 것
-                    images[1] = "www.a.b"
-                    storeInfo = Store(
+                    val images = arrayListOf<String>()
+                    for(i in 1..listAdapter.getSize()){
+                        images.add("https://firebasestorage.googleapis.com/v0/b/coupowning.appspot.com/o/${storeId}%2Fstore${i}.jpg?alt=media")
+                    }
+                    val storeInfo = Store(
                         binding.etstorename.text.toString(),
-                        StoreLocation("경기도 시흥시 산기대학로...", "$latitude", "$longitude"),
+                        StoreLocation(binding.etaddress.text.toString(), "$latitude", "$longitude"),
                         binding.phonenum.text.toString(),
                         binding.intro.text.toString() + "/" +  binding.stampsum.text.toString().toInt() + "/" + binding.num.text.toString() + "/" + binding.award.text.toString(),
-                        "cafe302", // id 변경해줄 것
-                        images)
-
+                        storeId!!, images)
+                    Log.d("storeId-확인", storeId!!)
                     val api = StoreService.create()
                     val callPost = api.postStore(storeInfo).enqueue(object : Callback<Store> {
                         override fun onResponse(call: Call<Store>, response: Response<Store>) {
@@ -121,14 +131,14 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                     val storage = FirebaseStorage.getInstance()
                     val storageRef = storage.reference
                     val fileName = "store${num++}.jpg"
-                    val imageStorageRef = storageRef.child("image").child(fileName) // "image" 변경하기
+                    val imageStorageRef = storageRef.child(storeInfo.storeId).child(fileName)
                     uriList.forEach {
                         val uploadTask = imageStorageRef.putFile(it)
                         uploadTask.addOnFailureListener {
                             it.printStackTrace()
                         }.addOnSuccessListener {
                             Toast.makeText(this, "가게가 등록/수정 되었습니다!", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainActivity::class.java).putExtra("registered", true)
+                            val intent = Intent(this, MainActivity::class.java).putExtra("registered", true).putExtra("storeId", storeInfo.storeId)
                             startActivity(intent)
                             finish()
                         }.addOnCanceledListener {
@@ -140,17 +150,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
         }
         binding.search.setOnClickListener{
             val intent = Intent(this, AddressActivity::class.java)
-            if(strings != null) {
-                strings!![0] = binding.etstorename.text.toString()
-                strings!![1] = binding.etaddress.text.toString()
-                strings!![2] = binding.phonenum.text.toString()
-                strings!![3] = binding.intro.text.toString()
-                strings!![4] = binding.stampsum.text.toString()
-                strings!![5] = binding.num.text.toString()
-                strings!![6] = binding.award.text.toString()
-                intent.putExtra("inform", strings)
-            }
-            startActivity(intent)
+            startActivityForResult(intent,0)
         }
     }
 
@@ -161,6 +161,26 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
             uri = data.data
             uriList.add(uri!!)
             listAdapter.setListData(ImageDTO(uri!!))
+            cnt++
+        }
+        else if (requestCode == 0){
+            latitude = data?.getDoubleExtra("x", -1.0)
+            longitude = data?.getDoubleExtra("y", -1.0)
+        }
+    }
+    private fun loadData(){
+        val pref = applicationContext.getSharedPreferences("storeId", Context.MODE_PRIVATE)
+        storeId = pref.getString("storeId", "")
+    }
+    private fun saveData(storeId : String){
+        val pref = applicationContext.getSharedPreferences("storeId", Context.MODE_PRIVATE)
+        pref.edit().putString("storeId", storeId).apply()
+    }
+    private fun getExtra(){
+        storeId = intent.getStringExtra("storeId")
+        if(storeId != null) {
+            saveData(storeId!!)
+            Log.d("스토어아이디:", storeId!!)
         }
     }
 }

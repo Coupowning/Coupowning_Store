@@ -33,9 +33,7 @@ class AddressActivity : AppCompatActivity(), OnMapReadyCallback {
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
         mapView = binding.navermap
         mapView.getMapAsync(this)
-        if(intent.getStringArrayListExtra("inform") != null){
-            strings = intent.getStringArrayListExtra("inform")!!
-        }
+        strings = intent.getStringArrayListExtra("inform")
         binding.back.setOnClickListener{
             finish()
         }
@@ -70,9 +68,8 @@ class AddressActivity : AppCompatActivity(), OnMapReadyCallback {
                 val intent = Intent(this, RegisterActivity::class.java)
                 intent.putExtra("x", slatLng!!.latitude)
                 intent.putExtra("y", slatLng!!.longitude)
-                intent.putExtra("inform", strings)
                 Toast.makeText(this, "위치가 등록되었습니다", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
+                setResult(0, intent)
                 finish()
             }
         }
@@ -81,7 +78,7 @@ class AddressActivity : AppCompatActivity(), OnMapReadyCallback {
                                             permissions: Array<String>,
                                             grantResults: IntArray) {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.size > 0
+            if (grantResults.isNotEmpty()
                 && grantResults[0] == PERMISSION_GRANTED
             ) {
                 naverMap.locationTrackingMode = LocationTrackingMode.Follow

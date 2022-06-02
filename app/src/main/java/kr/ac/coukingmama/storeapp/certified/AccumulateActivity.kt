@@ -20,6 +20,7 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
 
     lateinit var binding : ActivityAccumulateBinding
     private var userId : String? = null
+    private var storeId : String? = null
     private lateinit var max : String
 
     @SuppressLint("SetTextI18n")
@@ -28,6 +29,7 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
         binding = ActivityAccumulateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        storeId = intent.getStringExtra("storeId")
         max = intent.getStringExtra("max")!!
         userId = intent.getStringExtra("userId")
 
@@ -54,12 +56,11 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
             if(binding.rdminus.isChecked){
                 str = "차감"
             }
-            val storeId = "kevinkim3"
             var coupon : Coupon? = null
             if(binding.rdminus.isChecked)
-                coupon = Coupon(storeId, "-" + binding.numofstamp.text.toString())
+                coupon = Coupon(storeId!!, "-" + binding.numofstamp.text.toString())
             else if(binding.rdplus.isChecked)
-                coupon =  Coupon(storeId, binding.numofstamp.text.toString())
+                coupon =  Coupon(storeId!!, binding.numofstamp.text.toString())
             val api = StoreService.create()
             val callPost = api.addCoupon(userId!!, coupon!!).enqueue(object : Callback<Coupon> {
                 override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {

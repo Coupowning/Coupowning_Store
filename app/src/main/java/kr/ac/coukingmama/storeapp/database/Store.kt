@@ -14,5 +14,5 @@ data class Store(
     @SerializedName("storeId")
     val storeId: String,
     @SerializedName("storeImage")
-    val storeImage : Map<Int, String>
+    val storeImage : List<String>
 )

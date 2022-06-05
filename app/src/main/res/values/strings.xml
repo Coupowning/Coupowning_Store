@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">쿠포닝</string>
+    <string name="app_name">쿠포닝 사장님</string>
     <string name="app_logo">CouponOwning</string>
     <string name="kakao">loginByKakao</string>
     <string name="google">loginByGoogle</string>

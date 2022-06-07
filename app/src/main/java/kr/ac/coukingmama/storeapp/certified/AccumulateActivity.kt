@@ -51,6 +51,14 @@ class AccumulateActivity : AppCompatActivity() { // 적립 페이지
             }
         }
 
+        binding.rdplus.setOnClickListener{
+            binding.textView2.text = "적립할 도장 개수"
+        }
+
+        binding.rdminus.setOnClickListener {
+            binding.textView2.text = "차감할 도장 개수"
+        }
+
         binding.finish.setOnClickListener{
             var str = "적립"
             if(binding.rdminus.isChecked){

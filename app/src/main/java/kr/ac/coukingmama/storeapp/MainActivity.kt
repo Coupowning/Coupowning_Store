@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     private var isRegistered: Boolean = false
-    private var isRegister: Boolean = false
     private var storeId : String? = null
 
     @SuppressLint("CommitPrefEdits")
@@ -28,32 +27,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         storeId = intent.getStringExtra("storeId")
         isRegistered = intent.getBooleanExtra("registered", false)
-        isRegister = intent.getBooleanExtra("register", false)
         if(!isRegistered) {
             loadData()
         }
-        if(isRegister){
-            val intent = Intent(this, RegisterActivity::class.java)
-            isRegistered = false
-            saveData(isRegistered)
-            startActivity(intent)
-            finish()
-        }
-        saveData(isRegistered)
-        if(isRegistered) {
-            val intent = Intent(this, InquireActivity::class.java)
-            if(storeId != null){
-                intent.putExtra("storeId", storeId)
-            }
-            startActivity(intent)
-            finish()
-        }
-        else{
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-        //isToken()
+        isToken()
     }
     private fun isToken(){
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->

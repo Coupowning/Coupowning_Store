@@ -36,8 +36,7 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
     private var strings : ArrayList<String>? = null
     private var longitude : Double? = null
     private var latitude : Double? = null
-    private var storeId : String? = "2273395967"
-//    private var storeId : String? = null
+    private var storeId : String? = null
 
     @SuppressLint("UnsafeOptInUsageError")
     override fun onCreate(savedInstanceState: Bundle?) {

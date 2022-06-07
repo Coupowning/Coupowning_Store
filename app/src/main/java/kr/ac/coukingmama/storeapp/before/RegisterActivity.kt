@@ -128,20 +128,26 @@ class RegisterActivity : AppCompatActivity() { // 가게 등록 페이지
                     })
                     val storage = FirebaseStorage.getInstance()
                     val storageRef = storage.reference
-                    val fileName = "store${num++}.jpg"
-                    val imageStorageRef = storageRef.child(storeInfo.storeId).child(fileName)
+                    var flag = true
                     uriList.forEach {
+                        val fileName = "store${num++}.jpg"
+                        val imageStorageRef = storageRef.child(storeInfo.storeId).child(fileName)
                         val uploadTask = imageStorageRef.putFile(it)
                         uploadTask.addOnFailureListener {
                             it.printStackTrace()
+                            flag = false
                         }.addOnSuccessListener {
-                            Toast.makeText(this, "가게가 등록/수정 되었습니다!", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainActivity::class.java).putExtra("registered", true).putExtra("storeId", storeInfo.storeId)
-                            startActivity(intent)
-                            finish()
+
                         }.addOnCanceledListener {
                             Toast.makeText(this, "<오류>", Toast.LENGTH_SHORT).show()
                         }
+                    }
+                    if(flag){
+                        Toast.makeText(this, "가게가 등록/수정 되었습니다!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainActivity::class.java).putExtra("registered", true).putExtra("storeId", storeInfo.storeId)
+                        Thread.sleep(3000L)
+                        startActivity(intent)
+                        finish()
                     }
                 }
             }
